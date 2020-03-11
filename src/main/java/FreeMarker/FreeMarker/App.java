@@ -32,8 +32,8 @@ public class App {
 			List<Data> systems = new ArrayList<Data>();
 
 			// 3. Adding required data into list where Data class object will be stored
-			systems.add(new Data("name", "value", 1, "value", "value", "value"));
-			systems.add(new Data("name", "value", 1, "value", "value", "value"));
+			systems.add(new Data("name", "values", 1, "value", "value", "value"));
+			systems.add(new Data("name", "values", 1, "value", "value", "value"));
 
 			// 4. Add this list to the Map Object input
 			input.put("systems", systems);
@@ -43,7 +43,8 @@ public class App {
 
 			// 6. Template configs Where do we load the templates from:
 
-			File template_path = new File("W:\\Mohamed sulaimaan\\template");
+			File template_path = new File("./files/");
+			System.out.println(template_path.getAbsolutePath());
 			templateconfig.setDirectoryForTemplateLoading(template_path);
 			// Some other recommended settings:
 			templateconfig.setIncompatibleImprovements(new Version(2, 3, 29));

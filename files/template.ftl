@@ -8,7 +8,7 @@
 	<link rel="icon" type="image/x-icon" href="http://192.168.1.154/favicon.ico?any=param">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>CloudBLM | 26/12/1995</title>
+    <title>CloudBLM | ${date}</title>
     <style>
         /* width */
         ::-webkit-scrollbar {
@@ -271,36 +271,31 @@
                 </tr>
             </thead>
             <tbody id="tablebody">
+               <#list systems as system>
                 <tr>
-                    <td>1</td>
-                    <td style="font-weight:bold;">name</td>
-                    <td>values</td>
-                        <td style="color:red">1</td>    
+                    <td>${system_index + 1}</td>
+                    <td style="font-weight:bold;">${system.sample_name}</td>
+                    <td>${system.sampler_count}</td>
+                    <#if (system.error_count>0)>
+                        <td style="color:red">${system.error_count}</td>    
+                    <#else>
+                        <td style="color:green">${system.error_count}</td>
+                    </#if>
                     
-                    <td>value</td>
-                    <td>value</td>
+                    <td>${system.minresponse}</td>
+                    <td>${system.maxresponse}</td>
 					 
-                    <td><a href=value
-                            target="_blank">value</a>
+                    <td><a href=<#if system.url??>${system.url}<#else>none</#if>
+                            target="_blank"><#if system.url??>${system.url}<#else>none</#if></a>
                     </td>
+                    <#if (system.error_count>0)>
                         <td style="color:red">Fail</td>    
+                    <#else>
+                        <td style="color:green">Pass</td>
+                    </#if>
                     
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td style="font-weight:bold;">name</td>
-                    <td>values</td>
-                        <td style="color:red">1</td>    
-                    
-                    <td>value</td>
-                    <td>value</td>
-					 
-                    <td><a href=value
-                            target="_blank">value</a>
-                    </td>
-                        <td style="color:red">Fail</td>    
-                    
-                </tr>
+            </#list>
             </tbody>
         </table>
 		</div>
